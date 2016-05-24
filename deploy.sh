@@ -11,7 +11,8 @@ cmake ${WORKSPACE}/${VERSION}/$(echo ${NAME}| tr '[:lower:]' '[:upper:]') -G"Uni
 make -j2
 
 echo "Creating the modules file directory ${LIBRARIES_MODULES}"
-mkdir -p ${LIBRARIES_MODULES}/${NAME}
+
+mkdir -p ${HEP_MODULES}/${NAME}
 (
 cat <<MODULE_FILE
 #%Module1.0
