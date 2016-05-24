@@ -29,5 +29,5 @@ fi
 tar xzf  ${SRC_DIR}/${SOURCE_FILE} -C ${WORKSPACE} --skip-old-files
 mkdir -p ${WORKSPACE}/${VERSION}/build-${BUILD_NUMBER}
 cd ${WORKSPACE}/${VERSION}/build-${BUILD_NUMBER}
-cmake ${WORKSPACE}/${VERSION}/${NAME} -G"Unix Makefiles" -DCMAKE_INSTALL_PREFIX=${SOFT_DIR}
+cmake ${WORKSPACE}/${VERSION}/$(echo ${NAME}| tr '[:lower:]' '[:upper:]') -G"Unix Makefiles" -DCMAKE_INSTALL_PREFIX=${SOFT_DIR}
 make -j2

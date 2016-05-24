@@ -7,7 +7,7 @@ module add  gcc/${GCC_VERSION}
 cd ${WORKSPACE}/${VERSION}/build-${BUILD_NUMBER}
 echo "All tests have passed, will now build into ${SOFT_DIR}"
 rm -rf *
-cmake ${WORKSPACE}/${VERSION}/${NAME} -G"Unix Makefiles" -DCMAKE_INSTALL_PREFIX=${SOFT_DIR}
+cmake ${WORKSPACE}/${VERSION}/$(echo ${NAME}| tr '[:lower:]' '[:upper:]') -G"Unix Makefiles" -DCMAKE_INSTALL_PREFIX=${SOFT_DIR}
 make -j2
 
 echo "Creating the modules file directory ${LIBRARIES_MODULES}"
