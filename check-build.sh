@@ -32,4 +32,4 @@ MODULE_FILE
 ) > modules/$VERSION-gcc-${GCC_VERSION}
 
 mkdir -p ${HEP_MODULES}/${NAME}
-cp modules/$VERSION ${HEP_MODULES}/${NAME}-gcc-${GCC_VERSION}
+cp modules/$VERSION-gcc-${GCC_VERSION} ${HEP_MODULES}/${NAME}
