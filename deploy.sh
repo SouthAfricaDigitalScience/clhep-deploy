@@ -22,7 +22,7 @@ proc ModulesHelp { } {
     puts stderr "       that the [module-info name] module is not available"
 }
 
-module-whatis   "$NAME $VERSION : See https://github.com/SouthAfricaDigitalScience/gmp-deploy"
+module-whatis   "$NAME $VERSION : See https://github.com/SouthAfricaDigitalScience/clhep-deploy"
 setenv CLHEP_VERSION       $VERSION
 setenv CLHEP_DIR           $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION-gcc-${GCC_VERSION}
 prepend-path LD_LIBRARY_PATH   $::env(CLHEP_DIR)/lib
