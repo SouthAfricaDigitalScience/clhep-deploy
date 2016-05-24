@@ -2,7 +2,7 @@
 . /etc/profile.d/modules.sh
 module add ci
 module add cmake
-cd ${WORKSPACE}/build-${BUILD_NUMBER}
+cd ${WORKSPACE}/${VERSION}/build-${BUILD_NUMBER}
 make test
 
 echo $?
