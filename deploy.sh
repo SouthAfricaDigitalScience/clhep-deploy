@@ -36,5 +36,5 @@ mkdir -p ${HEP_MODULES}/${NAME}
 cp modules/$VERSION-gcc-${GCC_VERSION} ${HEP_MODULES}/${NAME}
 
 
-module add ${NAME}-gcc-${GCC_VERSION}
+module add ${NAME}/${VERSION}-gcc-${GCC_VERSION}
 which clhep-config
