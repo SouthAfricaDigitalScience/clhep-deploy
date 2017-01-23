@@ -2,7 +2,6 @@
 . /etc/profile.d/modules.sh
 module add ci
 module add cmake
-module add  gcc/${GCC_VERSION}
 cd ${WORKSPACE}/${VERSION}/build-${BUILD_NUMBER}
 make test
 
@@ -23,13 +22,13 @@ proc ModulesHelp { } {
 module add gcc/${GCC_VERSION}
 module-whatis   "$NAME $VERSION."
 setenv       CLHEP_VERSION       $VERSION
-setenv       CLHEP_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION-gcc-${GCC_VERSION}
+setenv       CLHEP_DIR           /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION-gcc-${GCC_VERSION}
 prepend-path LD_LIBRARY_PATH   $::env(CLHEP_DIR)/lib
 prepend-path CFLAGS            "-I${CLHEP_DIR}/include"
 prepend-path LDFLAGS           "-L${CLHEP_DIR}/lib"
 prepend-path PATH              $::env(CLHEP_DIR)/bin
 MODULE_FILE
-) > modules/$VERSION-gcc-${GCC_VERSION}
+) > modules/$VERSION-${GCC_VERSION}
 
 mkdir -p ${HEP_MODULES}/${NAME}
-cp modules/$VERSION-gcc-${GCC_VERSION} ${HEP_MODULES}/${NAME}
+cp modules/$VERSION ${HEP_MODULES}/${NAME}

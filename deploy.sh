@@ -3,7 +3,6 @@
 . /etc/profile.d/modules.sh
 module add deploy
 module add cmake
-module add  gcc/${GCC_VERSION}
 cd ${WORKSPACE}/${VERSION}/build-${BUILD_NUMBER}
 echo "All tests have passed, will now build into ${SOFT_DIR}"
 rm -rf *
@@ -34,8 +33,8 @@ MODULE_FILE
 ) > modules/$VERSION-gcc-${GCC_VERSION}
 
 mkdir -p ${HEP_MODULES}/${NAME}
-cp modules/$VERSION-gcc-${GCC_VERSION} ${HEP_MODULES}/${NAME}
+cp -v modules/$VERSION ${HEP_MODULES}/${NAME}
 
 
-module add ${NAME}/${VERSION}-gcc-${GCC_VERSION}
+module add ${NAME}/${VERSION}
 which clhep-config
