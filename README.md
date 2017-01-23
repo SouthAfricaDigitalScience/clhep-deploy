@@ -1,4 +1,4 @@
-[![Build Status](http://ci.sagrid.ac.za/buildStatus/icon?job=clhep-deploy)](http://ci.sagrid.ac.za/job/clhep-deploy)
+[![Build Status](https://ci.sagrid.ac.za/job/clhep-deploy/badge/icon)](https://ci.sagrid.ac.za/job/clhep-deploy)
 
 # clhep-deploy
 
