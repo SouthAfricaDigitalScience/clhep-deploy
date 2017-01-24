@@ -7,9 +7,10 @@ make test
 
 echo $?
 
+echo "Making install"
 make install
-mkdir -p ${REPO_DIR}
-mkdir -p modules
+echo "Making module"
+mkdir -vp modules
 (
 cat <<MODULE_FILE
 #%Module1.0
@@ -19,10 +20,9 @@ proc ModulesHelp { } {
     puts stderr "       This module does nothing but alert the user"
     puts stderr "       that the [module-info name] module is not available"
 }
-module add gcc/${GCC_VERSION}
 module-whatis   "$NAME $VERSION."
 setenv       CLHEP_VERSION       $VERSION
-setenv       CLHEP_DIR           /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION-gcc-${GCC_VERSION}
+setenv       CLHEP_DIR           /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 prepend-path LD_LIBRARY_PATH   $::env(CLHEP_DIR)/lib
 prepend-path CFLAGS            "-I${CLHEP_DIR}/include"
 prepend-path LDFLAGS           "-L${CLHEP_DIR}/lib"
@@ -31,4 +31,4 @@ MODULE_FILE
 ) > modules/$VERSION-${GCC_VERSION}
 
 mkdir -p ${HEP_MODULES}/${NAME}
-cp modules/$VERSION ${HEP_MODULES}/${NAME}
+cp -v modules/$VERSION ${HEP_MODULES}/${NAME}
