@@ -30,5 +30,6 @@ prepend-path PATH              $::env(CLHEP_DIR)/bin
 MODULE_FILE
 ) > modules/$VERSION-${GCC_VERSION}
 
+echo "HEP_MODULES/NAME is ${HEP_MODULES}/${NAME}"
 mkdir -p ${HEP_MODULES}/${NAME}
 cp -v modules/$VERSION ${HEP_MODULES}/${NAME}
