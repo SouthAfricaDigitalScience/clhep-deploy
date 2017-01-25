@@ -7,6 +7,11 @@ make test
 
 echo $?
 
+
+echo "--------------------- begin ci deployed env to see if things are set ----"
+env
+echo "--------------------- end ci deployed env to see if things are set ----"
+
 echo "Making install"
 make install
 echo "Making module"
