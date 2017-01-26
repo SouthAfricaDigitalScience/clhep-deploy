@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -x
 . /etc/profile.d/modules.sh
 module add ci
 module add cmake
