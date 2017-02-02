@@ -12,6 +12,7 @@ make -j2
 echo "Creating the modules file directory ${LIBRARIES_MODULES}"
 
 mkdir -p ${HEP_MODULES}/${NAME}
+mkdir -p modules
 (
 cat <<MODULE_FILE
 #%Module1.0
@@ -32,7 +33,6 @@ prepend-path PATH              $::env(CLHEP_DIR)/bin
 MODULE_FILE
 ) > modules/$VERSION
 
-mkdir -p ${HEP_MODULES}/${NAME}
 cp -v modules/$VERSION ${HEP_MODULES}/${NAME}
 
 
