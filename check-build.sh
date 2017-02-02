@@ -34,7 +34,7 @@ prepend-path CFLAGS            "-I${CLHEP_DIR}/include"
 prepend-path LDFLAGS           "-L${CLHEP_DIR}/lib"
 prepend-path PATH              $::env(CLHEP_DIR)/bin
 MODULE_FILE
-) > modules/$VERSION-${GCC_VERSION}
+) > modules/$VERSION
 
 echo "HEP_MODULES/NAME is ${HEP_MODULES}/${NAME}"
 mkdir -p ${HEP_MODULES}/${NAME}
