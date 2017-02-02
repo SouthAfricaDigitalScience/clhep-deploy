@@ -11,6 +11,7 @@ echo $?
 echo "--------------------- begin ci deployed env to see if things are set ----"
 env
 echo "--------------------- end ci deployed env to see if things are set ----"
+echo "bump git to get a new build"
 
 echo "Making install"
 make install
