@@ -7,9 +7,9 @@ cd ${WORKSPACE}/${VERSION}/build-${BUILD_NUMBER}
 echo "All tests have passed, will now build into ${SOFT_DIR}"
 rm -rf *
 cmake ${WORKSPACE}/${VERSION}/$(echo ${NAME}| tr '[:lower:]' '[:upper:]') -G"Unix Makefiles" -DCMAKE_INSTALL_PREFIX=${SOFT_DIR}
-make -j2
+make -j2 install
 
-echo "Creating the modules file directory ${LIBRARIES_MODULES}"
+echo "Creating the modules file directory ${HEP_MODULES}"
 
 mkdir -p ${HEP_MODULES}/${NAME}
 mkdir -p modules
@@ -27,8 +27,8 @@ module-whatis   "$NAME $VERSION : See https://github.com/SouthAfricaDigitalScien
 setenv CLHEP_VERSION       $VERSION
 setenv CLHEP_DIR           $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 prepend-path LD_LIBRARY_PATH   $::env(CLHEP_DIR)/lib
-prepend-path CFLAGS            "-I${CLHEP_DIR}/include"
-prepend-path LDFLAGS           "-L${CLHEP_DIR}/lib"
+prepend-path CFLAGS            "-I$::env(CLHEP_DIR)/include"
+prepend-path LDFLAGS           "-L::env(CLHEP_DIR)/lib"
 prepend-path PATH              $::env(CLHEP_DIR)/bin
 MODULE_FILE
 ) > modules/$VERSION
