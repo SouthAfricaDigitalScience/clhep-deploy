@@ -5,14 +5,14 @@ module add deploy
 module add cmake
 cd ${WORKSPACE}/${VERSION}/build-${BUILD_NUMBER}
 echo "All tests have passed, will now build into ${SOFT_DIR}"
-#rm -rf *
+rm -rf *
 echo $PATH
 cmake ${WORKSPACE}/${VERSION}/$(echo ${NAME}| tr '[:lower:]' '[:upper:]') -G"Unix Makefiles" -DCMAKE_INSTALL_PREFIX=${SOFT_DIR}
-make -j2 install
+make install
 
-echo "Creating the modules file directory ${HEP_MODULES}"
+echo "Creating the modules file directory ${HEP}"
 
-mkdir -p ${HEP_MODULES}/${NAME}
+mkdir -p ${HEP}/${NAME}
 mkdir -p modules
 (
 cat <<MODULE_FILE
@@ -34,7 +34,7 @@ prepend-path PATH              $::env(CLHEP_DIR)/bin
 MODULE_FILE
 ) > modules/$VERSION
 
-cp -v modules/$VERSION ${HEP_MODULES}/${NAME}
+cp -v modules/$VERSION ${HEP}/${NAME}
 
 
 module add ${NAME}/${VERSION}
