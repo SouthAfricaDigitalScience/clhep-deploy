@@ -3,11 +3,13 @@
 . /etc/profile.d/modules.sh
 module add deploy
 module add cmake
+module add  gcc/${GCC_VERSION}
 cd ${WORKSPACE}/${VERSION}/build-${BUILD_NUMBER}
 echo "All tests have passed, will now build into ${SOFT_DIR}"
 rm -rf *
 echo $PATH
-cmake ${WORKSPACE}/${VERSION}/$(echo ${NAME}| tr '[:lower:]' '[:upper:]') -G"Unix Makefiles" -DCMAKE_INSTALL_PREFIX=${SOFT_DIR}
+cmake ${WORKSPACE}/${VERSION}/$(echo ${NAME}| tr '[:lower:]' '[:upper:]') -G"Unix Makefiles"  \
+-DCMAKE_INSTALL_PREFIX=${SOFT_DIR}-gcc-${GCC_VERSION}
 make install
 
 echo "Creating the modules file directory ${HEP}"
@@ -32,10 +34,10 @@ prepend-path CFLAGS            "-I$::env(CLHEP_DIR)/include"
 prepend-path LDFLAGS           "-L::env(CLHEP_DIR)/lib"
 prepend-path PATH              $::env(CLHEP_DIR)/bin
 MODULE_FILE
-) > modules/$VERSION
+) > modules/${VERSION}-gcc-${GCC_VERSION}
 
-cp -v modules/$VERSION ${HEP}/${NAME}
+cp -v modules/${VERSION}-gcc-${GCC_VERSION} ${HEP}/${NAME}
 
 
-module add ${NAME}/${VERSION}
+module add ${NAME}/${VERSION}-gcc-${GCC_VERSION}
 which clhep-config

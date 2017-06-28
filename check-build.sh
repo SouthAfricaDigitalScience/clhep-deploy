@@ -2,16 +2,11 @@
 . /etc/profile.d/modules.sh
 module add ci
 module add cmake
+module add  gcc/${GCC_VERSION}
 cd ${WORKSPACE}/${VERSION}/build-${BUILD_NUMBER}
 make test
 
 echo $?
-
-
-echo "--------------------- begin ci deployed env to see if things are set ----"
-env
-echo "--------------------- end ci deployed env to see if things are set ----"
-echo "bump git to get a new build"
 
 echo "Making install"
 make install
@@ -34,10 +29,10 @@ prepend-path CFLAGS            "-I${CLHEP_DIR}/include"
 prepend-path LDFLAGS           "-L${CLHEP_DIR}/lib"
 prepend-path PATH              $::env(CLHEP_DIR)/bin
 MODULE_FILE
-) > modules/$VERSION
+) > modules/${VERSION}-gcc-${GCC_VERSION}
 
 echo "HEP/NAME is ${HEP}/${NAME}"
-mkdir -p ${HEP}/${NAME}
-cp -v modules/$VERSION ${HEP}/${NAME}
+mkdir -p ${HEP}/${NAME}-gcc-${GCC_VERSION}
+cp -v modules/$VERSION-gcc-${GCC_VERSION} ${HEP}/${NAME}
 module avail ${NAME}
-module add  ${NAME}/${VERSION}
+module add  ${NAME}/${VERSION}-gcc-${GCC_VERSION}
