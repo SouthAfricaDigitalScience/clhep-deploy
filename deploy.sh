@@ -28,7 +28,7 @@ proc ModulesHelp { } {
 
 module-whatis   "$NAME $VERSION : See https://github.com/SouthAfricaDigitalScience/clhep-deploy"
 setenv CLHEP_VERSION       $VERSION
-setenv CLHEP_DIR           $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
+setenv CLHEP_DIR           $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION-gcc-${GCC_VERSION}
 prepend-path LD_LIBRARY_PATH   $::env(CLHEP_DIR)/lib
 prepend-path CFLAGS            "-I$::env(CLHEP_DIR)/include"
 prepend-path LDFLAGS           "-L::env(CLHEP_DIR)/lib"
